@@ -1,4 +1,5 @@
 import "package:flutter/material.dart";
+import 'package:catalogue/utils/routes.dart';
 
 class HomePage extends StatelessWidget {
   const HomePage({super.key});
@@ -14,7 +15,15 @@ class HomePage extends StatelessWidget {
           child: const Text("Catelogue App"),
         ),
       ),
-      drawer: Drawer(),
+      drawer: Drawer(
+        child: ElevatedButton.icon(
+          onPressed: () {
+            Navigator.of(context).pushReplacementNamed(MyRoutes.loginRoute);
+          },
+          icon: const Icon(Icons.logout),
+          label: const Text("Logout"),
+        ),
+      ),
     );
   }
 }
