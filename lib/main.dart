@@ -22,7 +22,7 @@ class MyApp extends StatelessWidget {
         primaryTextTheme: GoogleFonts.latoTextTheme(),
       ),
       darkTheme: ThemeData(
-        brightness: Brightness.dark,
+        brightness: Brightness.light,
       ),
       initialRoute: "/",
       routes: {
