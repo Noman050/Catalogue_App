@@ -1,3 +1,6 @@
+// ignore_for_file: file_names
+
+
 import "package:flutter/material.dart";
 import 'package:catalogue/utils/routes.dart';
 
@@ -10,10 +13,8 @@ class HomePage extends StatelessWidget {
       appBar: AppBar(
         title: const Text("Catalogue App"),
       ),
-      body: Center(
-        child: Container(
-          child: const Text("Catelogue App"),
-        ),
+      body: const Center(
+        child: Text("Catelogue App"),
       ),
       drawer: Drawer(
         child: ElevatedButton.icon(
