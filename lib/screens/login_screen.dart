@@ -9,9 +9,40 @@ class LoginScreen extends StatefulWidget {
 }
 
 class _LoginScreenState extends State<LoginScreen> {
+  final myController1 = TextEditingController();
+  final myController2 = TextEditingController();
+  String wellcome = "Login TO Continue";
+  String well = "Welcome! ";
   String name = "";
+  bool changeButton = false;
+
+  bool _authenticate() {
+    if (myController1.text == "nomi" && myController2.text == "123") {
+      return true;
+    } else {
+      return false;
+    }
+  }
+
+  _notAuthencated() {
+    setState(() {
+      wellcome = "Your User Name or Password is Incorrect Try Re-Entring!";
+      name = "";
+      well = "";
+    });
+  }
+
+  @override
+  void dispose() {
+    // Clean up the controller when the widget is disposed.
+    myController1.dispose();
+    myController2.dispose();
+    super.dispose();
+  }
+
   @override
   Widget build(BuildContext context) {
+    var a = MediaQuery.of(context).size;
     return Material(
       child: SingleChildScrollView(
         child: Column(
@@ -19,12 +50,13 @@ class _LoginScreenState extends State<LoginScreen> {
             Image.asset(
               "lib/assets/images/loginIMAGE.png",
               fit: BoxFit.cover,
+              scale: a.aspectRatio,
             ),
             const SizedBox(
               height: 20,
             ),
             Text(
-              "Welcome $name! Login To Continue",
+              "$well $name $wellcome",
               style: const TextStyle(
                 fontSize: 20,
                 fontWeight: FontWeight.bold,
@@ -35,12 +67,13 @@ class _LoginScreenState extends State<LoginScreen> {
             ),
             Padding(
               padding: const EdgeInsets.symmetric(
-                vertical: 16,
-                horizontal: 32,
+                vertical: 50,
+                horizontal: 300,
               ),
               child: Column(
                 children: [
                   TextFormField(
+                    controller: myController1,
                     decoration: const InputDecoration(
                       hintText: "Enter Username",
                       labelText: "Username",
@@ -52,6 +85,7 @@ class _LoginScreenState extends State<LoginScreen> {
                     },
                   ),
                   TextFormField(
+                    controller: myController2,
                     obscureText: true,
                     decoration: const InputDecoration(
                       hintText: "Enter Password",
@@ -62,26 +96,41 @@ class _LoginScreenState extends State<LoginScreen> {
                     height: 40,
                   ),
                   InkWell(
-                    onTap: () {
-                      Navigator.of(context)
-                          .pushReplacementNamed(MyRoutes.homeRoute);
+                    onTap: () async {
+                      if (_authenticate()) {
+                        setState(() {
+                          changeButton = true;
+                        });
+                        await Future.delayed(
+                          const Duration(seconds: 1),
+                        );
+                        // ignore: use_build_context_synchronously
+                        Navigator.of(context)
+                            .pushReplacementNamed(MyRoutes.homeRoute);
+                      } else {
+                        _notAuthencated();
+                      }
                     },
-                    child: Container(
-                      width: 150,
+                    child: AnimatedContainer(
+                      duration: const Duration(seconds: 1),
+                      width: changeButton ? 50 : 150,
                       height: 40,
                       alignment: Alignment.center,
                       decoration: BoxDecoration(
                         color: Colors.deepPurple,
-                        borderRadius: BorderRadius.circular(8),
+                        borderRadius:
+                            BorderRadius.circular(changeButton ? 50 : 8),
                       ),
-                      child: const Text(
-                        "Login",
-                        style: TextStyle(
-                          color: Colors.white,
-                          fontWeight: FontWeight.bold,
-                          fontSize: 18,
-                        ),
-                      ),
+                      child: changeButton
+                          ? const Icon(Icons.done)
+                          : const Text(
+                              "Login",
+                              style: TextStyle(
+                                color: Colors.white,
+                                fontWeight: FontWeight.bold,
+                                fontSize: 18,
+                              ),
+                            ),
                     ),
                   ),
                   // ElevatedButton(
