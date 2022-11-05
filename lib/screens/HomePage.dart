@@ -1,11 +1,12 @@
-// ignore_for_file: file_names
+// ignore: file_names
+import "dart:convert";
 
 import "package:flutter/material.dart";
 import 'package:flutter/services.dart';
-import "../widgets/drawer.dart";
+
 import "../models/catalog.dart";
+import "../widgets/drawer.dart";
 import "../widgets/item_widget.dart";
-import "dart:convert";
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
@@ -26,12 +27,14 @@ class _HomePageState extends State<HomePage> {
         await rootBundle.loadString("lib/assets/files/catalog.json");
     final decodedData = jsonDecode(catalogJson);
     var productsData = decodedData["products"];
-    print(productsData);
+    CatalogModel.items = List.from(productsData)
+        .map<Item>((item) => Item.fromMap(item))
+        .toList();
+    setState(() {});
   }
 
   @override
   Widget build(BuildContext context) {
-    final dummyList = List.generate(10, (index) => CatalogModel.items[0]);
     return Scaffold(
       appBar: AppBar(
         title: const Text(
@@ -43,12 +46,17 @@ class _HomePageState extends State<HomePage> {
       ),
       body: Padding(
         padding: const EdgeInsets.all(16.0),
-        child: ListView.builder(
-          itemCount: dummyList.length,
-          itemBuilder: (context, index) {
-            return ItemWidget(item: dummyList[index]);
-          },
-        ),
+        child:
+            ((CatalogModel.items != null) && (CatalogModel.items!.isNotEmpty))
+                ? ListView.builder(
+                    itemCount: CatalogModel.items!.length,
+                    itemBuilder: (context, index) {
+                      return ItemWidget(item: CatalogModel.items![index]);
+                    },
+                  )
+                : const Center(
+                    child: CircularProgressIndicator(),
+                  ),
       ),
       drawer: const MyDrawer(),
     );
