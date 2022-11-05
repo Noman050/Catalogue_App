@@ -1,8 +1,9 @@
-import 'package:catalogue/screens/login_screen.dart';
 import "package:flutter/material.dart";
 import 'screens/HomePage.dart';
 import 'utils/routes.dart';
 import "./widgets/themes.dart";
+import "./screens/login_screen.dart";
+import "./screens/signup_screen.dart";
 
 void main() {
   runApp(const MyApp());
@@ -22,6 +23,7 @@ class MyApp extends StatelessWidget {
         "/": (context) => const LoginScreen(),
         MyRoutes.homeRoute: (context) => const HomePage(),
         MyRoutes.loginRoute: (context) => const LoginScreen(),
+        MyRoutes.sinupRoute: (context) => const SignupPage(),
       },
     );
   }

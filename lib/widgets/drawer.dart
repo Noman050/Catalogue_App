@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import "package:flutter/material.dart";
+import "../utils/routes.dart";
 
 class MyDrawer extends StatelessWidget {
   const MyDrawer({super.key});
@@ -46,7 +47,13 @@ class MyDrawer extends StatelessWidget {
               leading: const Icon(CupertinoIcons.mail),
               iconColor: Colors.white,
               title: getText("Email", Colors.white),
-            )
+            ),
+            ElevatedButton(
+                onPressed: () {
+                  Navigator.of(context)
+                      .pushReplacementNamed(MyRoutes.loginRoute);
+                },
+                child: const Text("Logout"))
           ],
         ),
       ),

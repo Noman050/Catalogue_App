@@ -40,6 +40,8 @@ dependencies:
   pay: ^1.0.1
   url_launcher: ^6.0.4
   url_strategy: ^0.2.0
+  email_validator: ^2.0.1
+  image_picker: ^0.8.5+3
   velocity_x: ^3.0.0
 dev_dependencies:
   flutter_test:

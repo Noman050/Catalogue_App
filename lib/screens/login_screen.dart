@@ -136,6 +136,18 @@ class _LoginScreenState extends State<LoginScreen> {
                         ),
                       ),
                     ),
+                    const SizedBox(
+                      height: 15,
+                    ),
+                    TextButton(
+                        onPressed: () {
+                          Navigator.of(context).pushNamed(MyRoutes.sinupRoute);
+                        },
+                        child: const Text(
+                          "Not Registered yet! Tap To Register Yourself!",
+                          style: TextStyle(
+                              fontWeight: FontWeight.bold, fontSize: 15),
+                        )),
                   ],
                 ),
               ),

@@ -10,7 +10,7 @@ class MyTheme {
           color: Colors.white,
           elevation: 0.0,
           iconTheme: const IconThemeData(
-            color: Colors.black,
+            color: Colors.white,
           ),
           textTheme: Theme.of(context).textTheme,
         ),
