@@ -1,6 +1,19 @@
-// ignore_for_file: public_member_api_docs, sort_constructors_first
+class CatalogModel {
+  static final items = [
+    Item(
+      id: 1,
+      name: "iPhone 12 Pro",
+      desc: "Apple iPhone 12th generation",
+      price: 999,
+      color: "#33405a",
+      image:
+          "https://www.91-img.com/gallery_images_uploads/d/7/d7cf5e2b1a3a3dfcca8a8dbb524fb11a8fb1c8e8.JPG?tr=h-550,w-0,c-at_max",
+    ),
+  ];
+}
+
 class Item {
-  late final String id;
+  late final int id;
   late final String name;
   late final String desc;
   late final num price;
@@ -15,14 +28,3 @@ class Item {
     required this.image,
   });
 }
-
-final products = [
-  Item(
-    id: "Codepur001",
-    name: "iPhone 12 Pro",
-    desc: "Apple iPhone 12th generation",
-    price: 999,
-    color: "#33405a",
-    image: "https://fdn2.gsmarena.com/vv/bigpic/apple-iphone-12-pro--.jpg",
-  ),
-];
