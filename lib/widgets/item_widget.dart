@@ -9,7 +9,6 @@ class ItemWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Card(
-      shape: StadiumBorder(side: BorderSide.none),
       child: ListTile(
         onTap: () {
           print("${item.name} Item Pressed");
