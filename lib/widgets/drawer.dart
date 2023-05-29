@@ -33,20 +33,35 @@ class MyDrawer extends StatelessWidget {
                 ),
               ),
             ),
-            ListTile(
-              leading: const Icon(CupertinoIcons.home),
-              iconColor: Colors.white,
-              title: getText("Home", Colors.white),
+            ElevatedButton(
+              onPressed: () {
+                Navigator.of(context).pushNamed(MyRoutes.homeRoute);
+              },
+              child: ListTile(
+                leading: const Icon(CupertinoIcons.home),
+                iconColor: Colors.white,
+                title: getText("Home", Colors.white),
+              ),
             ),
-            ListTile(
-              leading: const Icon(CupertinoIcons.profile_circled),
-              iconColor: Colors.white,
-              title: getText("Profile", Colors.white),
+            ElevatedButton(
+              onPressed: () {
+                Navigator.of(context).pushNamed(MyRoutes.profileRoute);
+              },
+              child: ListTile(
+                leading: const Icon(CupertinoIcons.profile_circled),
+                iconColor: Colors.white,
+                title: getText("Profile", Colors.white),
+              ),
             ),
-            ListTile(
-              leading: const Icon(CupertinoIcons.mail),
-              iconColor: Colors.white,
-              title: getText("Email", Colors.white),
+            ElevatedButton(
+              onPressed: () {
+                Navigator.of(context).pushNamed(MyRoutes.homeRoute);
+              },
+              child: ListTile(
+                leading: const Icon(CupertinoIcons.mail),
+                iconColor: Colors.white,
+                title: getText("Email", Colors.white),
+              ),
             ),
             ElevatedButton(
                 onPressed: () {

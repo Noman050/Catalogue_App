@@ -37,6 +37,7 @@ class _HomePageState extends State<HomePage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        backgroundColor: Colors.deepPurple,
         title: const Text(
           "Catalogue App",
           style: TextStyle(

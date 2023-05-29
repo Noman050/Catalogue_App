@@ -1,17 +1,17 @@
+import 'package:catalogue/screens/userProfileScreen.dart';
 import "package:flutter/material.dart";
 import 'screens/HomePage.dart';
 import 'utils/routes.dart';
 import "./widgets/themes.dart";
 import "./screens/login_screen.dart";
 import "./screens/signup_screen.dart";
+import './screens/item_screen.dart';
 
 void main() {
-  runApp(const MyApp());
+  runApp(MyApp());
 }
 
 class MyApp extends StatelessWidget {
-  const MyApp({super.key});
-
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -24,6 +24,8 @@ class MyApp extends StatelessWidget {
         MyRoutes.homeRoute: (context) => const HomePage(),
         MyRoutes.loginRoute: (context) => const LoginScreen(),
         MyRoutes.sinupRoute: (context) => const SignupPage(),
+        MyRoutes.itemRoute: (context) => const ItemScreen(),
+        MyRoutes.profileRoute: (context) => const ProfilePage(),
       },
     );
   }
